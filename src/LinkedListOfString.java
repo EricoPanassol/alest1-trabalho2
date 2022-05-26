@@ -10,12 +10,7 @@ public class LinkedListOfString {
         public Node(String element) {
             this.element = element;
             next = null;
-        }
-        
-        public Node(String element, Node next) {
-            this.element = element;
-            this.next = next;
-        }        
+        }      
     }
 
     
