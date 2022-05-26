@@ -61,7 +61,15 @@ public class ListaDeOcorrencias {
      * recebido por parametro, e false caso contrario.
      */
     public boolean add(int numPagina)  {
-        return false;
+        Node n = new Node(numPagina);
+        if(head == null){
+            head = n;
+        } else {
+            tail.next = n;
+        }
+        tail = n;
+        count++;
+        return true;
     }  
     
     /**
@@ -71,7 +79,19 @@ public class ListaDeOcorrencias {
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */    
     public Integer get(int index) {
-        return 0;
+        if((index < 0) || (index >= count)){
+            throw new IndexOutOfBoundsException();
+        }
+        if(index == count-1){
+            return tail.numeroDaPagina;
+        }
+        Node aux = head;
+        int c = 0;
+        while(c < index){
+            aux = aux.next;
+            c++;
+        }
+        return aux.numeroDaPagina;
     }
  
     /**
@@ -81,11 +101,31 @@ public class ListaDeOcorrencias {
      * @return true se a lista contem o elemento especificado
      */
     public boolean contains(int numPagina) {
+        Node aux = head;
+        for (int i = 0; i < count; i++) {
+            if(aux.numeroDaPagina == numPagina){
+                return true;
+            }
+            aux = aux.next;
+        }   
         return false;
     }    
-    
+
     @Override
-    public String toString() {
-        return null;
-    }
+    public String toString() { // O(n)
+        StringBuilder s = new StringBuilder();
+
+        Node aux = head;
+
+        while (aux != null) {
+            s.append(aux.numeroDaPagina);
+            if (aux.next != null) {
+                s.append(", ");
+            }
+            aux = aux.next;
+        }
+
+        s.append("\n");
+        return s.toString();
+    }    
 }
