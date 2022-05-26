@@ -132,50 +132,55 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int opUser = -1;
 
-        while (opUser != 5) {
-            System.out.println("\nO que você deseja fazer?");
-            System.out.println("1 - Exibir todo índice remissivo (ordem alfabética)");
-            System.out.println("2 - Exibir percentual de stopwords do texto (quanto % do texto é formado por stopwords)");
-            System.out.println("3 - Encontrar a palavra mais frequente (maior número de ocorrências)");
-            System.out.println("4 - Pesquisar palavras (lista o número das páginas onde ela se encontra)");
-            System.out.println("5 - Encerrar o programa");
-
-            opUser = sc.nextInt();
-            switch (opUser) {
-                case 1:
-                    System.out.println(listaPalavras.toString());
-                    break;
-                case 2:
-                    System.out.printf("Total de palavras no texto: %.0f\n", totalPalavras);
-                    System.out.printf("Total de stopwords no texto: %.0f\n", totalStopWords);
-                    System.out.printf("Percentual de stopwords: %.2f%%\n", percentualStopWords);
-                    break;
-                case 3:
-                    System.out.println("Palavra(s) mais frequente(s): ");
-                    ListaOrdenadaDePalavras maisFrequentes = listaPalavras.palavraMaisFrequente();
-                    for (int i = 0; i < maisFrequentes.size(); i++) {
-                        System.out.println(maisFrequentes.get(i));
-                    }
-                    break;
-                case 4:
-                    System.out.println("Palavra a ser buscada: ");
-                    String word = sc.next();
-                    word = word.toLowerCase();
-                    while(!listaPalavras.contains(word)){
-                        System.out.println("Palavra não encontrada\n Informe uma nova palavra");
-                        word = sc.next();
+        try{
+            while (opUser != 5) {
+                System.out.println("\nO que você deseja fazer?");
+                System.out.println("1 - Exibir todo índice remissivo (ordem alfabética)");
+                System.out.println("2 - Exibir percentual de stopwords do texto (quanto % do texto é formado por stopwords)");
+                System.out.println("3 - Encontrar a palavra mais frequente (maior número de ocorrências)");
+                System.out.println("4 - Pesquisar palavras (lista o número das páginas onde ela se encontra)");
+                System.out.println("5 - Encerrar o programa");
+    
+                opUser = sc.nextInt();
+                switch (opUser) {
+                    case 1:
+                        System.out.println(listaPalavras.toString());
+                        break;
+                    case 2:
+                        System.out.printf("Total de palavras no texto: %.0f\n", totalPalavras);
+                        System.out.printf("Total de stopwords no texto: %.0f\n", totalStopWords);
+                        System.out.printf("Percentual de stopwords: %.2f%%\n", percentualStopWords);
+                        break;
+                    case 3:
+                        System.out.println("Palavra(s) mais frequente(s): ");
+                        ListaOrdenadaDePalavras maisFrequentes = listaPalavras.palavraMaisFrequente();
+                        for (int i = 0; i < maisFrequentes.size(); i++) {
+                            System.out.println(maisFrequentes.get(i));
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Palavra a ser buscada: ");
+                        String word = sc.next();
                         word = word.toLowerCase();
-                    }
-                    System.out.println(word);
-                    System.out.println(listaPalavras.buscaPalavra(word));
-                    break;
-                case 5:
-                    System.out.println("Tchauzinho :)");
-                    break;
-                default:
-                    System.out.println("Opção inválida, tente novamente!");
-                    break;
+                        while(!listaPalavras.contains(word)){
+                            System.out.println("Palavra não encontrada\n Informe uma nova palavra");
+                            word = sc.next();
+                            word = word.toLowerCase();
+                        }
+                        System.out.println(word);
+                        System.out.println(listaPalavras.buscaPalavra(word));
+                        break;
+                    case 5:
+                        System.out.println("Tchauzinho :)");
+                        break;
+                    default:
+                        System.out.println("Opção inválida, tente novamente!");
+                        break;
+                }
             }
+        } catch(Exception e){
+            System.out.println("A entrada foi inválida\n[*] Encerrando o programa...");
         }
+        
     }
 }
