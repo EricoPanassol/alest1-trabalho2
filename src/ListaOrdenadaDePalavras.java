@@ -1,3 +1,7 @@
+package src;
+
+import java.util.ArrayList;
+
 /**
  * Esta classe guarda as palavra do indice remissivo em ordem alfabetica.
  * 
@@ -177,7 +181,7 @@ public class ListaOrdenadaDePalavras {
 
             for (int i = 0; i < tamanho; i++) {
                 Palavra next = current.next;
-                for (int c = i + 1; c < tamanho; c++) {
+                for (int j = i + 1; j < tamanho; j++) {
                     int compareTo = current.s.compareTo(next.s);
                     if (compareTo > 0) {
                         String aux = current.s;
@@ -195,37 +199,37 @@ public class ListaOrdenadaDePalavras {
         }
     }
 
-    public static void main(String[] args) {
-        ListaOrdenadaDePalavras list = new ListaOrdenadaDePalavras();
-        list.add("erico");
-        list.add("borboleta");
-        list.add("luana");
-        list.add("peixe");
-        list.add("dragao");
+    public ListaOrdenadaDePalavras palavraMaisFrequente(){
+        ListaOrdenadaDePalavras listaPalavrasMaisFrequentes = new ListaOrdenadaDePalavras();
 
-        System.out.println(list.toString());
-
-        list.ordenar();
-
-        System.out.println(list.toString());
-
-        String[] lista = new String[] { "k", "4", "m", "1", "k", "4", "z", "3" };
-        String aux;
-
-        for (int i = 0; i <= lista.length; i++) {
-            for (int c = i + 1; c < lista.length; c++) {
-                int compareTo = lista[i].compareTo(lista[c]);
-                if (compareTo > 0) {
-                    aux = lista[i];
-                    lista[i] = lista[c];
-                    lista[c] = aux;
-                }
+        int quantOcorrencias = 0;
+        Palavra aux = head;
+        for (int i = 0; i < count; i++) {
+            if (aux.listaOcorrencias.size() > quantOcorrencias) {
+                quantOcorrencias = aux.listaOcorrencias.size();
             }
-        }
-        for (String string : lista) {
-            System.out.println(string);
+            aux = aux.next;
         }
 
+        aux = head;
+        for (int i = 0; i < count; i++) {
+            if (aux.listaOcorrencias.size() == quantOcorrencias) {
+                listaPalavrasMaisFrequentes.add(aux.s);
+            }
+            aux = aux.next;
+        }
+
+        return listaPalavrasMaisFrequentes;
     }
 
+    public ListaDeOcorrencias buscaPalavra(String word){
+        Palavra aux = head;
+        for (int i = 0; i < count; i++) {
+            if(aux.s.equals(word)){
+                return aux.listaOcorrencias;
+            }
+            aux = aux.next;
+        }
+        return null;
+    }
 }
