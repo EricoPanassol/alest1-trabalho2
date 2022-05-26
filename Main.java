@@ -181,6 +181,8 @@ public class Main {
         } catch(Exception e){
             System.out.println("A entrada foi inválida\n[*] Encerrando o programa...");
         }
+
+        sc.close();
         
     }
 }

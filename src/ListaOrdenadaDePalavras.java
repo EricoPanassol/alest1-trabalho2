@@ -1,7 +1,4 @@
 package src;
-
-import java.util.ArrayList;
-
 /**
  * Esta classe guarda as palavra do indice remissivo em ordem alfabetica.
  * 
