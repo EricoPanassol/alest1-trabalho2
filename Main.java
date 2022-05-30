@@ -24,6 +24,8 @@ public class Main {
         double totalStopWords = 0;
         String l;
 
+        Scanner sc = new Scanner(System.in);
+
         ArquivoTexto stopWords = new ArquivoTexto(); // objeto que gerencia o arquivo de stopwords
         ArquivoTexto arquivo = new ArquivoTexto(); // objeto que gerencia o arquivo a ser lido
         LinhaTexto linha = new LinhaTexto(); // objeto que gerencia uma linha
@@ -51,9 +53,12 @@ public class Main {
         } while (true);
         stopWords.close();
 
-        System.out.println("Carregando arquivo \'java.txt\'...");
+        System.out.println("Escolha um arquivo a ser lido: \nalice\ncocoaandchocolate\nfiveweeksinaballoon\njava");
+        System.out.print("Sua opção: ");
+        String archive = sc.nextLine();
+        System.out.println("Carregando arquivo \'" + archive + ".txt\'...");
         // leitura do arquivo java.txt
-        arquivo.open("arquivos/java.txt");
+        arquivo.open("arquivos/" + archive + ".txt");
         do // laco que passa em cada linha do arquivo
         {
             l = arquivo.getNextLine();
@@ -129,7 +134,7 @@ public class Main {
 
         arquivo.close();
 
-        Scanner sc = new Scanner(System.in);
+        
         int opUser = -1;
 
         try{
