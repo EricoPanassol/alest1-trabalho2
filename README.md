@@ -7,8 +7,11 @@ Basicamente, é necessário realizar a leitura de um arquivo texto, e trabalhar 
 Ao final do processamento o programa deverá apresentar a lista de palavras do texto ordenadas em ordem alfabética crescente e apresentando as páginas onde a palavra ocorreu no texto. Para facilitar, será considerado que a cada 40 linhas começa uma nova página. O exemplo a seguir ilustra como a estrutura da figura anterior deve ser apresentada:
 
   alice: 1, 8, 16, 24, 53.
+  
   head: 27, 38.
+  
   queen: 8, 14, 17, 23.
+  
   time: 5, 25, 35.
   
 Para usarmos arquivos de textos interessantes, sugerimos o acesso dos livros disponíveis no site do Projeto Gutenberg: http://www.gutenberg.org/. No Moodle já foram disponibilizados os arquivos de alguns livros disponíveis neste site, além de um arquivo de teste (veja o arquivo livros.zip). É importante observar que, para simplificar, foram retirados alguns comentários sobre o Projeto do início dos arquivos destes livros. Todos os livros estão em inglês, de maneira a facilitar a questão de tratamento dos acentos. Caso deseje tratar palavras em Português, o site https://codebeautify.org/remove-accents pode ser usado.
