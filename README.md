@@ -1,6 +1,7 @@
 # Algoritmos e Estruturas de Dados I
 
 ## Trabalho 2 – Geração Automática de Índice Remissivo
+### Autores: Érico Panasso & Luana Thomas
 
 ### Descrição
 
